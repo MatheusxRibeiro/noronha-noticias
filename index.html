@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Noronha Notícias</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial , sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #00299b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #01217a;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+    color: #ffffff;
+}
+
+        .container {
+            display: flex;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        .main-news {
+            flex: 2;
+        }
+
+        .side-news {
+            flex: 1;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #01217a;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card h2 {
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 5;
+            top: 5;
+            width: 80%;
+            height: 80%;
+            background-color: #01217a;
+            color: #ffffff;
+        }
+        .modal-content{
+            background: #ffffff;
+            margin: 10% auto;
+            padding: 20px;
+            width: 50%;
+            border-radius: 10px;
+        }
+        .fechar{
+            float: right;
+            font-size: 35px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<script>
+    function abrirModal(titulo, texto) {
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("modal-titulo").innerText = titulo;
+        document.getElementById("modal-texto").innerText = texto;
+    }
+    function fecharModal() {
+        document.getElementById("modal").style.display = "none"
+    }
+</script>
+<body>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-texto"></p>
+     </div>
+</div>
+<header>
+    <h1>Noronha Notícias</h1>
+    <p>As principais notícias em tempo real</p>
+</header>
+
+<nav>
+    <a href="home.html" target="_blank">Home</a>
+    <a href="saude.html" target="_blank">Saúde</a>
+    <a href="cultura.html" target="_blank">Cultura</a>
+    <a href="esportes.html" target="_blank">Esportes</a>
+    <a href="urgencia.html" target="_blank">Urgências</a>
+    <a href="https://www.instagram.com/noronha_noticias/" target="_blank">Nosso Instagram</a>
+</nav>
+
+<div class="container">
+
+    <div class="main-news">
+        <div class="card" onclick="abrirModal(   
+        'Alunos da Escola Estadual criam sites para noticiar acontecimentos de nossa cidade',
+        'Um grupo de alunos criaram site de noticias da cidade de Olimpio Noronha com a intenção de informar todos os nossos cidadãos de acontecimentos recentes'
+        )"
+        >
+        </div>
+        <div class="card" onclick="abrirModal(
+            'Economia apresenta sinais de recuperação',
+            'Especialistas apontam crescimento em diversos setores após meses de instabilidade...'
+        )">
+        </div>
+    <div class="side-news">
+        <div class="card">
+            <h3>ÚLTIMAS NOTÍCIAS</h3>
+            <p>- Prefeitura finaliza as obras de calçamentos em locais...</p>
+            <p>- Escola Estadual divulga a hipotese de um curso profissionalizante em serviços públicos</p>
+            <p>- Clima muda nos próximos dias</p>
+        </div>
+
+        <div class="card">
+            <h3>DESTAQUES</h3>
+            <p>- Câmara Municipal aprova o aumento salarial de funcionários incluindo cartão de vale refeição e também haverá pagamento retroativo de direitos dos profissionais.</p>
+            <p>- Iniciou-se nessa semana o Projeto do Parlamento Jovem na Câmara Municipal</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <h1>&copy; 2026 Noronha Notícias - Todos os direitos reservados</h1>
+    <p> Envie-nos notícias pelo seguinte email: noronhanoticias2026@gmail.com</p>
+</footer>
+
+</body>
+</html>
