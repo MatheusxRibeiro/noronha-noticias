@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noronha Notícias</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* HEADER */
+header {
+    background-color: #00299b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* BOTÃO ☰ */
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* MENU LATERAL */
+#menu {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background-color: #01217a;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#menu a:hover {
+    background-color: #001a5c;
+}
+
+/* MENU ATIVO */
+#menu.active {
+    right: 0;
+}
+
+/* OVERLAY */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 999;
+}
+
+#overlay.active {
+    display: block;
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+}
+
+.main-news {
+    flex: 2;
+}
+
+.side-news {
+    flex: 1;
+}
+
+/* CARDS */
+.card {
+    cursor: pointer;
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 5px solid #01217a;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* FOOTER */
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: white;
+    color: #01217a;
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.fechar {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+</style>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+}
+
+function fecharMenu() {
+    document.getElementById("menu").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
+
+function abrirModal(titulo, texto) {
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("modal-titulo").innerText = titulo;
+    document.getElementById("modal-texto").innerText = texto;
+}
+
+function fecharModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="fecharMenu()"></div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="fecharModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+        <h2 id="modal-titulo"></h2>
+        <p id="modal-texto"></p>
+    </div>
+</div>
+
+<header>
+    <h1>Noronha Notícias</h1>
+    <p>As principais notícias em tempo real</p>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- MENU LATERAL -->
+<nav id="menu">
+    <a href="home.html" onclick="fecharMenu()">Home</a>
+    <a href="saude.html" onclick="fecharMenu()">Saúde</a>
+    <a href="cultura.html" onclick="fecharMenu()">Cultura</a>
+    <a href="esportes.html" onclick="fecharMenu()">Esportes</a>
+    <a href="urgencia.html" onclick="fecharMenu()">Urgências</a>
+    <a href="https://www.instagram.com/noronha_noticias/" target="_blank" onclick="fecharMenu()">Nosso Instagram</a>
+</nav>
+
+<div class="container">
+
+    <div class="main-news">
+
+        <div class="card" onclick="abrirModal(
+            'Alunos criam site de notícias',
+            'Um grupo de alunos criou um site para divulgar notícias e informações da cidade.'
+        )">
+            <h2>Alunos do Ensino Médio criam site</h2>
+            <p>Clique para saber mais</p>
+        </div>
+
+        <div class="card" onclick="abrirModal(
+            'Estradas rurais preocupam moradores',
+            'Moradores reclamam das condições precárias das estradas rurais.'
+        )">
+            <h2>Situação das estradas rurais</h2>
+            <p>Clique para saber mais</p>
+        </div>
+
+        <div class="card" onclick="abrirModal(
+            'Curso profissionalizante aberto',
+            'Prefeitura abre vagas para cursos de construção civil.'
+        )">
+            <h2>Curso profissionalizante</h2>
+            <p>Clique para saber mais</p>
+        </div>
+
+    </div>
+
+    <div class="side-news">
+
+        <div class="card">
+            <h3>ÚLTIMAS NOTÍCIAS</h3>
+            <p>- Obras finalizadas</p>
+            <p>- Novo curso em análise</p>
+            <p>- Mudança no clima</p>
+        </div>
+
+        <div class="card">
+            <h3>DESTAQUES</h3>
+            <p>- Aumento salarial aprovado</p>
+            <p>- Parlamento Jovem iniciado</p>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <h3>&copy; 2026 Noronha Notícias</h3>
+    <p>Contato: noronhanoticias2026@gmail.com</p>
+</footer>
+
+</body>
+</html>
